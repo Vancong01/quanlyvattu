@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit material</title>
+</head>
+<body>
+<h1>Edit material</h1>
+<p>
+    <a href="/materials">Material list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-material}" th:object="${material}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Code:</td>
+            <td><input type="text" th:field="*{code}"/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>ImportDate:</td>
+            <td><input type="text" th:field="*{importDate}"/></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" th:field="*{description}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Quantity :</td>
+            <td><input type="text" th:field="*{quantity}"/></td>
+        </tr>
+        <tr>
+            <td>Images :</td>
+            <td><input type="text" th:field="*{images}"/></td>
+        </tr>
+        <tr>
+            <td>Supplier: </td>
+            <td>
+                <select name ="supplier">
+                    <option th:each=" s : ${suppliers}" th:value="${s.id}" th:text="${s.name}" th:selected="(${s.id} ==*{supplier.id})">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update material"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

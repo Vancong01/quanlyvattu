@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View supplier</title>
+</head>
+<body>
+<h1>View supplier: <span th:text="${supplier.name}"></span></h1>
+<a href="/suppliers">Supplier list</a>
+<table border="1">
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>ImportDate</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Supplier</th>
+    </tr>
+    <th:block th:each="material :${materials}">
+        <tr>
+            <td th:text="${material.code}"></td>
+            <td th:text="${material.name}"></td>
+            <td th:text="${material.importDate}"></td>
+            <td th:text="${material.description}"></td>
+            <td th:text="${material.price}"></td>
+            <td th:text="${material.quantity}"></td>
+            <td th:text="${material.images}"></td>
+            <td th:text="${material.supplier.name}"></td>
+        </tr>
+    </th:block>
+</table>
+
+
+
+</body>
+</html>
